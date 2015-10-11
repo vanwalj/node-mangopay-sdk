@@ -1,0 +1,30 @@
+{
+  "name": "node-mangopay-sdk",
+  "version": "0.0.1",
+  "description": "Non official node mangopay SDK, promise flavoured.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanwalj/node-mangopay-sdk.git"
+  },
+  "keywords": [
+    "Node",
+    "Mangopay",
+    "SDK",
+    "Promise"
+  ],
+  "author": "Jordan Van Walleghem <j.vanwall@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vanwalj/node-mangopay-sdk/issues"
+  },
+  "homepage": "https://github.com/vanwalj/node-mangopay-sdk#readme",
+  "dependencies": {
+    "bluebird": "^2.10.2",
+    "lodash": "^3.10.1",
+    "request": "^2.64.0"
+  }
+}
