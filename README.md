@@ -3,11 +3,11 @@ Non official node mangopay SDK, promise flavoured.
 
 **Warning ⚠️ : Not tested yet, currently under active development**
 
-##Install
+## Install
 
 `$> npm install mangopay-sdk --save`
 
-##Usage
+## Usage
 
 ``` js
 const Mangopay = require('mangopay-sdk');
@@ -27,30 +27,30 @@ mangopay.users.get()
 
 ```
 
-##API
+## API
 
-###mangopay
+### mangopay
 
-###user
+### user
 
-###wallet
+### wallet
 
-###kycDocument
+### kycDocument
 
-###cardRegistration
+### cardRegistration
 
-###card
+### card
 
-###transfer
+### transfer
 
-###bankAccount
+### bankAccount
 
-###payOut
+### payOut
 
-###payIn
+### payIn
 
-###refund
+### refund
 
-###dispute
+### dispute
 
-###preauthorization
+### preauthorization
