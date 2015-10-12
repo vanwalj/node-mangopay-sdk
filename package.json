@@ -1,5 +1,5 @@
 {
-  "name": "node-mangopay-sdk",
+  "name": "mangopay-sdk",
   "version": "0.0.1",
   "description": "Non official node mangopay SDK, promise flavoured.",
   "main": "index.js",
