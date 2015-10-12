@@ -17,7 +17,8 @@
     "Node",
     "Mangopay",
     "SDK",
-    "Promise"
+    "Promise",
+    "Node"
   ],
   "author": "Jordan Van Walleghem <j.vanwall@gmail.com>",
   "license": "MIT",
