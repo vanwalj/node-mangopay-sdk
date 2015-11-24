@@ -12,6 +12,7 @@ const mangopayApp = process.env.MANGOPAY_APP;
 const mangopaySecret = process.env.MANGOPAY_SECRET;
 
 describe('Mangopay sdk test suite', function () {
+    // Mangopay sandbox is pretty slow sometimes.
     this.timeout(10000);
     describe('users', function () {
 
@@ -36,7 +37,27 @@ describe('Mangopay sdk test suite', function () {
                     Nationality: 'FR',
                     CountryOfResidence: 'FR'
                 });
-                console.log(user);
+                return done();
+            } catch (e) {
+                return done(e);
+            }
+        });
+
+        it('list user transactions', function *(done) {
+            try {
+                const mangopay = new Mangopay(mangopayApp, mangopaySecret);
+                const user = yield mangopay.User.create('natural', {
+                    Email: chance.email(),
+                    FirstName: chance.first(),
+                    LastName: chance.last(),
+                    Birthday: Math.round(chance.birthday().getTime() / 1000),
+                    Nationality: 'FR',
+                    CountryOfResidence: 'FR'
+                });
+                const transactions = yield user.Transaction.list({
+                    page: 1,
+                    per_page: 100
+                });
                 return done();
             } catch (e) {
                 return done(e);
