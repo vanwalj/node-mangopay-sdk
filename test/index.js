@@ -18,7 +18,7 @@ describe('Mangopay sdk test suite', function () {
         it('list', function *(done) {
             try {
                 const mangopay = new Mangopay(mangopayApp, mangopaySecret);
-                yield mangopay.events.get();
+                yield mangopay.Event.list();
                 return done();
             } catch (e) {
                 return done(e);
@@ -28,7 +28,7 @@ describe('Mangopay sdk test suite', function () {
         it('create', function *(done) {
             try {
                 const mangopay = new Mangopay(mangopayApp, mangopaySecret);
-                const user = yield mangopay.users.create('natural', {
+                const user = yield mangopay.User.create('natural', {
                     Email: chance.email(),
                     FirstName: chance.first(),
                     LastName: chance.last(),
