@@ -1,7 +1,6 @@
-/**
- * Created by Jordan on 11/10/15.
- */
 'use strict';
+
+var assert = require('assert');
 
 const Chance = require('chance');
 
@@ -58,6 +57,71 @@ describe('Mangopay sdk test suite', function () {
                     page: 1,
                     per_page: 100
                 });
+                return done();
+            } catch (e) {
+                return done(e);
+            }
+        });
+
+        it('create a bank account', function *(done) {
+            try {
+                const mangopay = new Mangopay(mangopayApp, mangopaySecret);
+                const user = yield mangopay.User.create('natural', {
+                    Email: chance.email(),
+                    FirstName: chance.first(),
+                    LastName: chance.last(),
+                    Birthday: Math.round(chance.birthday().getTime() / 1000),
+                    Nationality: 'FR',
+                    CountryOfResidence: 'FR'
+                });
+                yield user.BankAccount.create('IBAN', {
+                    OwnerName: user.FirstName,
+                    UserId: user.Id,
+                    OwnerAddress: {
+                        AddressLine1: '20 Rue de la Santé',
+                        City: 'Rennes',
+                        PostalCode: '35000',
+                        Country: 'FR'
+                    },
+                    IBAN: "FR7618829754160173622224154",
+                    BIC: "CMBRFR2BCME",
+                    Tag: "custom tag"
+                });
+                return done();
+            } catch (e) {
+                return done(e);
+            }
+        });
+
+        it('try to create a bank account with a falsy IBAN', function *(done) {
+            try {
+                const mangopay = new Mangopay(mangopayApp, mangopaySecret);
+                const user = yield mangopay.User.create('natural', {
+                    Email: chance.email(),
+                    FirstName: chance.first(),
+                    LastName: chance.last(),
+                    Birthday: Math.round(chance.birthday().getTime() / 1000),
+                    Nationality: 'FR',
+                    CountryOfResidence: 'FR'
+                });
+                try {
+                    yield user.BankAccount.create('IBAN', {
+                        OwnerName: user.FirstName,
+                        UserId: user.Id,
+                        OwnerAddress: {
+                            AddressLine1: '20 Rue de la Santé',
+                            City: 'Rennes',
+                            PostalCode: '35000',
+                            Country: 'FR'
+                        },
+                        IBAN: "FR7618829754160173622224153",
+                        BIC: "CMBRFR2BCME",
+                        Tag: "custom tag"
+                    });
+                } catch (e) {
+                    assert(e instanceof Mangopay.errors.MangopayError);
+                    assert(e instanceof Mangopay.errors.ParamError);
+                }
                 return done();
             } catch (e) {
                 return done(e);
