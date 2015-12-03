@@ -1,7 +1,7 @@
 # node-mangopay-sdk
 Non official node mangopay SDK, promise flavoured.
 
-**Warning ⚠️ : Not tested yet, currently under active development**
+**Warning ⚠️ : Currently under active development**
 
 ## Install
 
@@ -14,9 +14,9 @@ const Mangopay = require('mangopay-sdk');
 
 const mangopay = new Mangopay('username', 'password');
 
-mangopay.users.get()
+mangopay.User.list()
     .then(function (users) {
-        return users[0].cards.get();
+        return users[0].Card.list();
     }).then(function (cards) {
         return cards[0].update({
             RegistrationData: ''
@@ -35,28 +35,28 @@ mangopay.users.get()
 
 ### mangopay
 #### mangopay.Event
-* `mongopay.Event.list() -> Promise([event])`
+* `mangopay.Event.list() -> Promise<[event]>`
 
 #### mangopay.User
-* `mongopay.User.get(userId) -> Promise<user>`
-* `mongopay.User.list(Pagination) -> Promise<[user]>`
-* `mongopay.User.create(userType, userData) -> Promise<user>`
-* `mongopay.User.update(userType, userId, userData) -> Promise<user>`
+* `mangopay.User.get(userId) -> Promise<user>`
+* `mangopay.User.list(Pagination) -> Promise<[user]>`
+* `mangopay.User.create(userType, userData) -> Promise<user>`
+* `mangopay.User.update(userType, userId, userData) -> Promise<user>`
 
 #### mangopay.Wallet
-* `mongopay.Wallet.get(walletId) -> Promise<wallet>`
-* `mongopay.Wallet.list(Pagination) -> Promise<[wallet]>`
-* `mongopay.Wallet.create(walletData) -> Promise<wallet>`
-* `mongopay.Wallet.update(walletId, walletData) -> Promise<wallet>`
+* `mangopay.Wallet.get(walletId) -> Promise<wallet>`
+* `mangopay.Wallet.list(Pagination) -> Promise<[wallet]>`
+* `mangopay.Wallet.create(walletData) -> Promise<wallet>`
+* `mangopay.Wallet.update(walletId, walletData) -> Promise<wallet>`
 
 #### mangopay.CardRegistration
-* `mongopay.CardRegistration.get(cardRegistrationId) -> Promise<cardRegistration>`
-* `mongopay.CardRegistration.create(cardRegistrationData) -> Promise<cardRegistration>`
+* `mangopay.CardRegistration.get(cardRegistrationId) -> Promise<cardRegistration>`
+* `mangopay.CardRegistration.create(cardRegistrationData) -> Promise<cardRegistration>`
 
 #### mangopay.PayIns
-* `mongopay.PayIn.get(payInId) -> Promise<payIn>`
-* `mongopay.PayIn.list(Pagination) -> Promise<[payIn]>`
-* `mongopay.PayIn.create(payInData) -> Promise<payIn>`
+* `mangopay.PayIn.get(payInId) -> Promise<payIn>`
+* `mangopay.PayIn.list(Pagination) -> Promise<[payIn]>`
+* `mangopay.PayIn.create(payInData) -> Promise<payIn>`
 
 #### mangopay.PayIn.BankWire.Direct
 * `mangopay.PayIn.BankWire.Direct.create(directBankWirePayInData) -> Promise<payIn>`
@@ -74,40 +74,40 @@ mangopay.users.get()
 * `mangopay.PayIn.Card.Web.create(webCardPayInData) -> Promise<payIn>`
 
 ### mangopay.Transfer
-* `mongopay.Transfer.get(transferId) -> Promise<transfer>`
-* `mongopay.Transfer.create(transferData) -> Promise<transfer>`
+* `mangopay.Transfer.get(transferId) -> Promise<transfer>`
+* `mangopay.Transfer.create(transferData) -> Promise<transfer>`
 
 ### mangopay.KYC.Document
-* `mongopay.KYC.Document.get(documentId) -> Promise<document>`
-* `mongopay.KYC.Document.list(Pagination) -> Promise<[document]>`
+* `mangopay.KYC.Document.get(documentId) -> Promise<document>`
+* `mangopay.KYC.Document.list(Pagination) -> Promise<[document]>`
 
 ### mangopay.Card
-* `mongopay.Card.get(cardId) -> Promise<card>`
-* `mongopay.Card.update(cardId, cardData) -> Promise<card>`
+* `mangopay.Card.get(cardId) -> Promise<card>`
+* `mangopay.Card.update(cardId, cardData) -> Promise<card>`
 
 ### mangopay.PayOut
-* `mongopay.PayOut.get(payOutId) -> Promise<payOut>`
+* `mangopay.PayOut.get(payOutId) -> Promise<payOut>`
 
 ### mangopay.PayOut.BankWire
-* `mongopay.PayOut.BankWire.create(bankWirePayOutData) -> Promise<payOut>`
+* `mangopay.PayOut.BankWire.create(bankWirePayOutData) -> Promise<payOut>`
 
 ### mangopay.Refund
-* `mongopay.Refund.get(refundId) -> Promise<refund>`
+* `mangopay.Refund.get(refundId) -> Promise<refund>`
 
 ### mangopay.Preauthorization
-* `mongopay.Preauthorization.get(preauthorizationId) -> Promise<preauthorization>`
-* `mongopay.Preauthorization.update(preauthorizationId, preauthorizationData) -> Promise<preauthorization>`
+* `mangopay.Preauthorization.get(preauthorizationId) -> Promise<preauthorization>`
+* `mangopay.Preauthorization.update(preauthorizationId, preauthorizationData) -> Promise<preauthorization>`
 
 ### mangopay.Preauthorization.Card.Direct
-* `mongopay.Preauthorization.Card.Direct.create(directCardPreauthorizationData) -> Promise<preauthorization>`
+* `mangopay.Preauthorization.Card.Direct.create(directCardPreauthorizationData) -> Promise<preauthorization>`
 
 ### mangopay.Dispute
-* `mongopay.Dispute.get(disputeId) -> Promise<dispute>`
-* `mongopay.Dispute.list(Pagination) -> Promise<[dispute]>`
-* `mongopay.Dispute.update(disputeId, disputeData) -> Promise<dispute>`
-* `mongopay.Dispute.close(disputeId) -> Promise<dispute>`
-* `mongopay.Dispute.contest(disputeId) -> Promise<dispute>`
-* `mongopay.Dispute.reSubmit(disputeId, disputeData) -> Promise<dispute>`
+* `mangopay.Dispute.get(disputeId) -> Promise<dispute>`
+* `mangopay.Dispute.list(Pagination) -> Promise<[dispute]>`
+* `mangopay.Dispute.update(disputeId, disputeData) -> Promise<dispute>`
+* `mangopay.Dispute.close(disputeId) -> Promise<dispute>`
+* `mangopay.Dispute.contest(disputeId) -> Promise<dispute>`
+* `mangopay.Dispute.reSubmit(disputeId, disputeData) -> Promise<dispute>`
 
 ### user
 * `user.update(userData) -> Promise<user>`
