@@ -27,13 +27,13 @@
   },
   "homepage": "https://github.com/vanwalj/node-mangopay-sdk#readme",
   "dependencies": {
-    "bluebird": "^2.10.2",
-    "lodash": "^3.10.1",
-    "request": "^2.64.0"
+    "bluebird": "3.0.6",
+    "lodash": "3.10.1",
+    "request": "2.64.0"
   },
   "devDependencies": {
-    "chance": "^0.8.0",
-    "co-mocha": "^1.1.2",
-    "mocha": "^2.3.3"
+    "chance": "0.8.0",
+    "co-mocha": "1.1.2",
+    "mocha": "2.3.3"
   }
 }
