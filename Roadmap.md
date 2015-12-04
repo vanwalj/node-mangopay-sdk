@@ -4,4 +4,5 @@
 * Full doc
 * Specialized error types
 * Parameters validation
-* Full code coverageAd
+* Full code coverage
+* Pagination object/methods
