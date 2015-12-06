@@ -1,7 +1,7 @@
 # node-mangopay-sdk
 Non official node mangopay SDK, promise flavoured.
 
-**Warning ⚠️ : Currently under active development**
+**Warning ⚠️ : Currently under active development, subject to API changes**
 
 ## Install
 
@@ -40,8 +40,10 @@ mangopay.User.list()
 #### mangopay.User
 * `mangopay.User.get(userId) -> Promise<user>`
 * `mangopay.User.list(Pagination) -> Promise<[user]>`
-* `mangopay.User.create(userType, userData) -> Promise<user>`
-* `mangopay.User.update(userType, userId, userData) -> Promise<user>`
+* `mangopay.User.Natural.create(userData) -> Promise<user>`
+* `mangopay.User.Legal.create(userData) -> Promise<user>`
+* `mangopay.User.Natural.update(userId, userData) -> Promise<user>`
+* `mangopay.User.Legal.update(userId, userData) -> Promise<user>`
 
 #### mangopay.Wallet
 * `mangopay.Wallet.get(walletId) -> Promise<wallet>`
@@ -95,11 +97,11 @@ mangopay.User.list()
 * `mangopay.Refund.get(refundId) -> Promise<refund>`
 
 ### mangopay.Preauthorization
-* `mangopay.Preauthorization.get(preauthorizationId) -> Promise<preauthorization>`
-* `mangopay.Preauthorization.update(preauthorizationId, preauthorizationData) -> Promise<preauthorization>`
+* `mangopay.PreAuthorization.get(preAuthorizationId) -> Promise<preAuthorization>`
+* `mangopay.PreAuthorization.update(preAuthorizationId, preAuthorizationData) -> Promise<preAuthorization>`
 
 ### mangopay.Preauthorization.Card.Direct
-* `mangopay.Preauthorization.Card.Direct.create(directCardPreauthorizationData) -> Promise<preauthorization>`
+* `mangopay.PreAuthorization.Card.Direct.create(directCardPreAuthorizationData) -> Promise<preAuthorization>`
 
 ### mangopay.Dispute
 * `mangopay.Dispute.get(disputeId) -> Promise<dispute>`
@@ -111,42 +113,57 @@ mangopay.User.list()
 
 ### user
 * `user.update(userData) -> Promise<user>`
-
-### user.Cards
-* `user.Card.list(Pagination) -> Promise<[cards]>`
-
-### user.Wallets
-* `user.Wallet.list(Pagination) -> Promise<[wallets]>`
-
-### user.Transactions
+* `user.reload() -> Promise<user>`
+* `user.Card.list(Pagination) -> Promise<[card]>`
+* `user.Wallet.create(data) -> Promise<[wallet]>`
+* `user.Wallet.list(Pagination) -> Promise<[wallet]>`
 * `user.Transaction.list(Pagination) -> Promise<[transaction]>`
-
-### user.BankAccounts
 * `user.BankAccount.list(Pagination) -> Promise<[bankAccount]>`
 * `user.BankAccount.create(bankAccountData) -> Promise<bankAccount>`
-
-### user.KYC.Documents
 * `user.KYC.Document.list() -> Promise<[document]>`
 * `user.KYC.Document.create(documentKYCData) -> Promise<document>`
 
 ### wallet
+* `wallet.reload() -> Promise<wallet>`
+* `wallet.Transaction.list(Pagination) -> Promise<[wallet]>`
 
 ### kycDocument
+* `kycDocument.update(data) -> Promise<kycDocument>`
+* `kycDocument.reload() -> Promise<kycDocument>`
+* `kycDocument.Page.create(data) -> Promise<kycDocumentPage>`
 
 ### cardRegistration
+* `cardRegistration.update(data) -> Promise<cardRegistration>`
+* `cardRegistration.reload() -> Promise<cardRegistration>`
 
 ### card
+* `card.update(data) -> Promise<card>`
+* `card.reload() -> Promise<card>`
 
 ### transfer
+* `transfer.Refund.create(data) -> Promise<refund>`
+* `transfer.reload() -> Promise<transfer>`
 
 ### bankAccount
+* `bankAccount.reload() -> Promise<bankAccount>`
 
 ### payOut
+* `payOut.reload() -> Promise<payOut>`
 
 ### payIn
+* `payIn.reload() -> Promise<payIn>`
+* `payIn.Refund.create() -> Promise<refund>`
 
 ### refund
+* `refund.reload() -> Promise<refund>`
 
 ### dispute
+* `dispute.reload() -> Promise<dispute>`
+* `dispute.update(data) -> Promise<dispute>`
+* `dispute.close() -> Promise<dispute>`
+* `dispute.contest(data) -> Promise<dispute>`
+* `dispute.submit() -> Promise<dispute>`
 
-### preauthorization
+### preAuthorization
+* `preAuthorization.reload() -> Promise<preAuthorization>`
+* `preAuthorization.update(data) -> Promise<preAuthorization>`
