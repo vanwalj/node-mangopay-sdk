@@ -1,5 +1,8 @@
 'use strict';
 
+// We disable bluebirds warnings in tests :)
+process.env.BLUEBIRD_WARNINGS = 0;
+
 var assert = require('assert');
 
 const Chance = require('chance');
@@ -18,7 +21,7 @@ describe('Mangopay sdk test suite', function () {
         it('create a bank account', function *(done) {
             try {
                 const mangopay = new Mangopay(mangopayApp, mangopaySecret);
-                const user = yield mangopay.User.create('natural', {
+                const user = yield mangopay.User.Natural.create({
                     Email: chance.email(),
                     FirstName: chance.first(),
                     LastName: chance.last(),
@@ -58,7 +61,7 @@ describe('Mangopay sdk test suite', function () {
         it('create user', function *(done) {
             try {
                 const mangopay = new Mangopay(mangopayApp, mangopaySecret);
-                const user = yield mangopay.User.create('natural', {
+                yield mangopay.User.Natural.create({
                     Email: chance.email(),
                     FirstName: chance.first(),
                     LastName: chance.last(),
@@ -76,7 +79,7 @@ describe('Mangopay sdk test suite', function () {
         it('list user transactions', function *(done) {
             try {
                 const mangopay = new Mangopay(mangopayApp, mangopaySecret);
-                const user = yield mangopay.User.create('natural', {
+                const user = yield mangopay.User.Natural.create({
                     Email: chance.email(),
                     FirstName: chance.first(),
                     LastName: chance.last(),
@@ -84,7 +87,7 @@ describe('Mangopay sdk test suite', function () {
                     Nationality: 'FR',
                     CountryOfResidence: 'FR'
                 });
-                const transactions = yield user.Transaction.list({
+                yield user.Transaction.list({
                     page: 1,
                     per_page: 100
                 });
@@ -98,7 +101,7 @@ describe('Mangopay sdk test suite', function () {
         it('try to create a bank account with a falsy IBAN', function *(done) {
             try {
                 const mangopay = new Mangopay(mangopayApp, mangopaySecret);
-                const user = yield mangopay.User.create('natural', {
+                const user = yield mangopay.User.Natural.create({
                     Email: chance.email(),
                     FirstName: chance.first(),
                     LastName: chance.last(),
@@ -109,7 +112,6 @@ describe('Mangopay sdk test suite', function () {
                 try {
                     yield user.BankAccount.create('IBAN', {
                         OwnerName: user.FirstName,
-                        UserId: user.Id,
                         OwnerAddress: {
                             AddressLine1: '20 Rue de la Santé',
                             City: 'Rennes',
@@ -121,10 +123,12 @@ describe('Mangopay sdk test suite', function () {
                         Tag: "custom tag"
                     });
                 } catch (e) {
+                    console.error(e);
                     assert(e instanceof Mangopay.errors.MangopayError);
                     assert(e instanceof Mangopay.errors.ParamError);
+                    return done();
                 }
-                return done();
+                return done('Should have thrown');
             } catch (e) {
                 return done(e);
             }
