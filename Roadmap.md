@@ -6,3 +6,4 @@
 * Parameters validation
 * Full code coverage
 * Pagination object/methods
+* Core refactor
