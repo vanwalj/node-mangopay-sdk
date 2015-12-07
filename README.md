@@ -47,7 +47,6 @@ mangopay.User.list()
 
 #### mangopay.Wallet
 * `mangopay.Wallet.get(walletId) -> Promise<wallet>`
-* `mangopay.Wallet.list(Pagination) -> Promise<[wallet]>`
 * `mangopay.Wallet.create(walletData) -> Promise<wallet>`
 * `mangopay.Wallet.update(walletId, walletData) -> Promise<wallet>`
 
