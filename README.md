@@ -173,3 +173,7 @@ mangopay.User.list()
 ### preAuthorization
 * `preAuthorization.reload() -> Promise<preAuthorization>`
 * `preAuthorization.update(data) -> Promise<preAuthorization>`
+
+### hook
+* `hook.reload() -> Promise<hook>`
+* `hook.update(data) -> Promise<hook>`
