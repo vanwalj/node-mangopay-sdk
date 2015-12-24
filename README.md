@@ -110,6 +110,13 @@ mangopay.User.list()
 * `mangopay.Dispute.contest(disputeId) -> Promise<dispute>`
 * `mangopay.Dispute.reSubmit(disputeId, disputeData) -> Promise<dispute>`
 
+### mangopay.Hook
+* `mangopay.Hook.get(hookId) -> Promise<hook>`
+* `mangopay.Hook.list(Pagination) -> Promise<[hook]>`
+* `mangopay.Hook.update(hookId, hookData) -> Promise<hook>`
+* `mangopay.Hook.create(hookData) -> Promise<hook>`
+
+
 ### user
 * `user.update(userData) -> Promise<user>`
 * `user.reload() -> Promise<user>`
